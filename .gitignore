@@ -1,0 +1,10 @@
+# .gitignore
+data/
+logs/
+*.log
+*.pyc
+__pycache__/
+.venv/
+venv/
+.env
+*.gguf
