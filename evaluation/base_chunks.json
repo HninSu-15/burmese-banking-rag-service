@@ -1,0 +1,241 @@
+[
+  {
+    "chunk_id": "atm_services_faq_md_sec_0",
+    "doc_name": "ATM_Services_FAQ.md",
+    "section_title": "Q: ATM ကတ် ပျောက်ဆုံးသွားပါက သို့မဟုတ် ခိုးယူခံရပါက ဘာလုပ်ရမလဲ။",
+    "text_preview": "passage: # ATM Services & Card Management FAQ\n## 1. ATM Card Loss and Blocking (ATM ကတ် ပျောက်ဆုံးခြင်း နှင့် ပိတ်ဆို့ခြင်း)\n\n### Q: ATM ကတ် ပျောက်ဆုံးသွားပါက သို့မဟုတ် ခိုးယူခံရပါက ဘာလုပ်ရမလဲ။\nATM ကတ",
+    "test_queries": [
+      "ATM ကတ် ပျောက်ဆုံးသွားပါက သို့မဟုတ် ခိုးယူခံရပါက ဘာလုပ်ရမလဲ။",
+      "ATM ကတ် ပျောက်ဆုံးသွားပါက သို့မဟုတ် ခိုးယူခံရပါက ဘယ်လိုလုပ်ရမလဲ။",
+      "ATM ကတ် ပျောက်သွားရင် သို့မဟုတ် ခိုးယူခံရပါက ဘာလုပ်ရမလဲ။",
+      "ATM ကတ် ပျောက်သွားပါက သို့မဟုတ် ခိုးယူခံရပါက ဘာလုပ်ရမလဲ။"
+    ]
+  },
+  {
+    "chunk_id": "atm_services_faq_md_sec_1",
+    "doc_name": "ATM_Services_FAQ.md",
+    "section_title": "Q: ATM ကတ် အသစ်ပြန်လျှောက်ရင် ဘယ်လောက် ကုန်ကျမလဲ။",
+    "text_preview": "passage: # ATM Services & Card Management FAQ\n## 2. Card Replacement Fees and Processing Time (ကတ်အသစ် လျှောက်ထားခြင်း၊ ကတ်အစားထိုးခ နှင့် ကြာမြင့်ချိန်)\n\n### Q: ATM ကတ် အသစ်ပြန်လျှောက်ရင် ဘယ်လောက် ကု",
+    "test_queries": [
+      "ATM ကတ် အသစ်ပြန်လျှောက်ရင် ဘယ်လောက် ကုန်ကျမလဲ။"
+    ]
+  },
+  {
+    "chunk_id": "atm_services_faq_md_sec_2",
+    "doc_name": "ATM_Services_FAQ.md",
+    "section_title": "Q: ATM စက်မှ တစ်နေ့လျှင် ငွေဘယ်လောက်အထိ ထုတ်ယူနိုင်ပါသလဲ။",
+    "text_preview": "passage: # ATM Services & Card Management FAQ\n## 3. Daily Withdrawal Limits and Charges (နေ့စဉ် ငွေထုတ်ယူမှု ပမာဏ ကန့်သတ်ချက် နှင့် ဝန်ဆောင်ခ)\n\n### Q: ATM စက်မှ တစ်နေ့လျှင် ငွေဘယ်လောက်အထိ ထုတ်ယူနိုင်ပ",
+    "test_queries": [
+      "ATM စက်မှ တစ်နေ့လျှင် ငွေဘယ်လောက်အထိ ထုတ်ယူနိုင်ပါသလဲ။",
+      "ATM စက်မှ တစ်နေ့လျှင် ငွေဘယ်လောက်အထိ ထုတ်ဖို့နိုင်ပါသလဲ။",
+      "ATM စက်မှ တစ်နေ့လျှင် ငွေဘယ်လောက်အထိ ထုတ်လို့ရပါသလဲ။"
+    ]
+  },
+  {
+    "chunk_id": "atm_services_faq_md_sec_3",
+    "doc_name": "ATM_Services_FAQ.md",
+    "section_title": "Q: ATM စက်ထဲ ကတ်ညပ်ကျန်ခဲ့ရင် ဘယ်လိုလုပ်ရမလဲ။",
+    "text_preview": "passage: # ATM Services & Card Management FAQ\n## 4. Trapped Card Protocol (ATM စက်ထဲ ကတ်ညပ်ကျန်ခဲ့ခြင်း)\n\n### Q: ATM စက်ထဲ ကတ်ညပ်ကျန်ခဲ့ရင် ဘယ်လိုလုပ်ရမလဲ။\nATM စက်မှ ငွေထုတ်စဉ် လျှပ်စစ်မီးပျက်သွားခြင်",
+    "test_queries": [
+      "ATM စက်ထဲ ကတ်ညပ်ကျန်ခဲ့ရင် ဘယ်လိုလုပ်ရမလဲ။"
+    ]
+  },
+  {
+    "chunk_id": "atm_services_faq_md_sec_4",
+    "doc_name": "ATM_Services_FAQ.md",
+    "section_title": "Q: ATM PIN နံပါတ် မေ့သွားရင် သို့မဟုတ် ပြောင်းချင်ရင် ဘယ်လိုလုပ်ရမလဲ။",
+    "text_preview": "passage: # ATM Services & Card Management FAQ\n## 5. PIN Reset Procedures (ATM PIN နံပါတ် မေ့သွားခြင်း သို့မဟုတ် ပြောင်းလဲခြင်း)\n\n### Q: ATM PIN နံပါတ် မေ့သွားရင် သို့မဟုတ် ပြောင်းချင်ရင် ဘယ်လိုလုပ်ရမလ",
+    "test_queries": [
+      "ATM PIN နံပါတ် မေ့သွားရင် သို့မဟုတ် ပြောင်းချင်ရင် ဘယ်လိုလုပ်ရမလဲ။"
+    ]
+  },
+  {
+    "chunk_id": "branch_and_atm_locator_md_sec_0",
+    "doc_name": "branch_and_atm_locator.md",
+    "section_title": "Q: ဘဏ်ခွဲများ၏ ပုံမှန်ဖွင့်လှစ်ချိန် နှင့် ရုံးပိတ်ရက်များမှာ မည်သို့ဖြစ်သနည်း။",
+    "text_preview": "passage: # Branch Network, ATM/CRM Locator & Service Hours Policy\n## 1. Branch Banking Hours & Operating Schedules (ဘဏ်ခွဲများ၏ ဖွင့်လှစ်ချိန် နှင့် ဝန်ဆောင်မှုရက်များ)\n\n### Q: ဘဏ်ခွဲများ၏ ပုံမှန်ဖွင့",
+    "test_queries": [
+      "ဘဏ်ခွဲများ၏ ပုံမှန်ဖွင့်လှစ်ချိန် နှင့် ရုံးပိတ်ရက်များမှာ မည်သို့ဖြစ်သနည်း။"
+    ]
+  },
+  {
+    "chunk_id": "branch_and_atm_locator_md_sec_1",
+    "doc_name": "branch_and_atm_locator.md",
+    "section_title": "Q: ATM နှင့် CRM (Cash Recycling Machine) စက်များ၏ ကွာခြားချက်နှင့် ဝန်ဆောင်မှုများမှာ မည်သည်နည်း။",
+    "text_preview": "passage: # Branch Network, ATM/CRM Locator & Service Hours Policy\n## 2. ATM & CRM Self-Service Network (ATM နှင့် CRM စက်များ သုံးစွဲနိုင်မှု)\n\n### Q: ATM နှင့် CRM (Cash Recycling Machine) စက်များ၏ က",
+    "test_queries": [
+      "ATM နှင့် CRM (Cash Recycling Machine) စက်များ၏ ကွာခြားချက်နှင့် ဝန်ဆောင်မှုများမှာ မည်သည်နည်း။"
+    ]
+  },
+  {
+    "chunk_id": "branch_and_atm_locator_md_sec_2",
+    "doc_name": "branch_and_atm_locator.md",
+    "section_title": "Q: မိမိနှင့် အနီးဆုံး ဘဏ်ခွဲ သို့မဟုတ် ATM/CRM စက်ကို မည်သို့ ရှာဖွေနိုင်သနည်း။",
+    "text_preview": "passage: # Branch Network, ATM/CRM Locator & Service Hours Policy\n## 3. Location Finding & Support (ဘဏ်ခွဲ နှင့် စက်များ တည်နေရာ ရှာဖွေခြင်း)\n\n### Q: မိမိနှင့် အနီးဆုံး ဘဏ်ခွဲ သို့မဟုတ် ATM/CRM စက်ကို",
+    "test_queries": [
+      "မိမိနှင့် အနီးဆုံး ဘဏ်ခွဲ သို့မဟုတ် ATM/CRM စက်ကို မည်သို့ ရှာဖွေနိုင်သနည်း။"
+    ]
+  },
+  {
+    "chunk_id": "branch_and_atm_locator_md_sec_4",
+    "doc_name": "branch_and_atm_locator.md",
+    "section_title": "Q: သင်္ကြန် သို့မဟုတ် အစိုးရ ရုံးပိတ်ရက်ရှည်များတွင် ဘဏ်ဝန်ဆောင်မှု ရရှိနိုင်ပါသလား။",
+    "text_preview": "passage: # Branch Network, ATM/CRM Locator & Service Hours Policy\n## 5. Holiday & Emergency Service Announcement (ရုံးပိတ်ရက် အရေးပေါ် ဝန်ဆောင်မှု)\n\n### Q: သင်္ကြန် သို့မဟုတ် အစိုးရ ရုံးပိတ်ရက်ရှည်မျာ",
+    "test_queries": [
+      "သင်္ကြန် သို့မဟုတ် အစိုးရ ရုံးပိတ်ရက်ရှည်များတွင် ဘဏ်ဝန်ဆောင်မှု ရရှိနိုင်ပါသလား။"
+    ]
+  },
+  {
+    "chunk_id": "card_replacement_policy_md_sec_0",
+    "doc_name": "card_replacement_policy.md",
+    "section_title": "Q: မည်သည့် အခြေအနေများတွင် ကတ် အစားထိုး လျှောက်ထားနိုင်သနည်း။",
+    "text_preview": "passage: # Bank Card Replacement Policy & Standard Operating Procedures\n## 1. General Policy & Eligibility (ကတ် အစားထိုးလဲလှယ်ခြင်းဆိုင်ရာ အထွေထွေ မူဝါဒ)\n\n### Q: မည်သည့် အခြေအနေများတွင် ကတ် အစားထိုး လ",
+    "test_queries": [
+      "မည်သည့် အခြေအနေများတွင် ကတ် အစားထိုး လျှောက်ထားနိုင်သနည်း။"
+    ]
+  },
+  {
+    "chunk_id": "card_replacement_policy_md_sec_2",
+    "doc_name": "card_replacement_policy.md",
+    "section_title": "Q: ကတ်အသစ် ထုတ်ယူရာတွင် မည်သည့် စာရွက်စာတမ်းများ ယူဆောင်လာရမည်နည်း။",
+    "text_preview": "passage: # Bank Card Replacement Policy & Standard Operating Procedures\n## 3. Required Verification Documents (လိုအပ်သော စာရွက်စာတမ်းများ)\n\n### Q: ကတ်အသစ် ထုတ်ယူရာတွင် မည်သည့် စာရွက်စာတမ်းများ ယူဆောင်",
+    "test_queries": [
+      "ကတ်အသစ် ထုတ်ယူရာတွင် မည်သည့် စာရွက်စာတမ်းများ ယူဆောင်လာရမည်နည်း။",
+      "ကတ်အသစ် ထုတ်ဖို့ရာတွင် မည်သည့် စာရွက်စာတမ်းများ ယူဆောင်လာရမည်နည်း။",
+      "ကတ်သစ် ထုတ်ယူရာတွင် မည်သည့် စာရွက်စာတမ်းများ ယူဆောင်လာရမည်နည်း။",
+      "ကတ်အသစ် ထုတ်ယူရာတွင် မည်သည့် အထောက်အထားများ ယူဆောင်လာရမည်နည်း။",
+      "ကတ်အသစ် ထုတ်ယူရာတွင် မည်သည့် စာရွက်တွေ ယူဆောင်လာရမည်နည်း။"
+    ]
+  },
+  {
+    "chunk_id": "card_replacement_policy_md_sec_3",
+    "doc_name": "card_replacement_policy.md",
+    "section_title": "Q: အရေးပေါ် ကတ်အသစ် လိုအပ်ပါက မည်သို့ ဆောင်ရွက်ရမည်နည်း။",
+    "text_preview": "passage: # Bank Card Replacement Policy & Standard Operating Procedures\n## 4. Emergency Replacement & Delivery Options (အရေးပေါ် ကတ်လျှောက်ထားခြင်း နှင့် ပို့ဆောင်မှု)\n\n### Q: အရေးပေါ် ကတ်အသစ် လိုအပ်ပ",
+    "test_queries": [
+      "အရေးပေါ် ကတ်အသစ် လိုအပ်ပါက မည်သို့ ဆောင်ရွက်ရမည်နည်း။",
+      "အရေးပေါ် ကတ်သစ် လိုအပ်ပါက မည်သို့ ဆောင်ရွက်ရမည်နည်း။"
+    ]
+  },
+  {
+    "chunk_id": "card_replacement_policy_md_sec_4",
+    "doc_name": "card_replacement_policy.md",
+    "section_title": "Q: ကတ်အသစ် ရရှိပြီးပါက အကောင့်အဟောင်းနှင့် တိုက်ရိုက် ချိတ်ဆက်ပါသလား။",
+    "text_preview": "passage: # Bank Card Replacement Policy & Standard Operating Procedures\n## 5. Account Linkage & PIN Security Rules (အကောင့် ချိတ်ဆက်မှု နှင့် PIN လုံခြုံရေး)\n\n### Q: ကတ်အသစ် ရရှိပြီးပါက အကောင့်အဟောင်း",
+    "test_queries": [
+      "ကတ်အသစ် ရရှိပြီးပါက အကောင့်အဟောင်းနှင့် တိုက်ရိုက် ချိတ်ဆက်ပါသလား။",
+      "ကတ်သစ် ရရှိပြီးပါက အကောင့်အဟောင်းနှင့် တိုက်ရိုက် ချိတ်ဆက်ပါသလား။"
+    ]
+  },
+  {
+    "chunk_id": "fixed_deposit_and_interest_rates_md_sec_0",
+    "doc_name": "fixed_deposit_and_interest_rates.md",
+    "section_title": "Q: Fixed Deposit (အသေအချာ အပ်ငွေ) အကောင့် ဆိုသည်မှာ မည်သည်နည်း။ မည်သည့် သက်တမ်းများ ရရှိနိုင်သနည်း။",
+    "text_preview": "passage: # Fixed Deposit & Interest Rates Policy\n## 1. Fixed Deposit Overview & Tenure Options (အသေအချာ အပ်ငွေ နှင့် သက်တမ်း အမျိုးအစားများ)\n\n### Q: Fixed Deposit (အသေအချာ အပ်ငွေ) အကောင့် ဆိုသည်မှာ မည",
+    "test_queries": [
+      "Fixed Deposit (အသေအချာ အပ်ငွေ) အကောင့် ဆိုသည်မှာ မည်သည်နည်း။ မည်သည့် သက်တမ်းများ ရရှိနိုင်သနည်း။"
+    ]
+  },
+  {
+    "chunk_id": "fixed_deposit_and_interest_rates_md_sec_1",
+    "doc_name": "fixed_deposit_and_interest_rates.md",
+    "section_title": "Q: Fixed Deposit သက်တမ်းအလိုက် ရရှိနိုင်သော အတိုးနှုန်းများမှာ မည်သို့ဖြစ်သနည်း။",
+    "text_preview": "passage: # Fixed Deposit & Interest Rates Policy\n## 2. Interest Rates & Calculation (အတိုးနှုန်းများ နှင့် အတိုးတွက်ချက်ပုံ)\n\n### Q: Fixed Deposit သက်တမ်းအလိုက် ရရှိနိုင်သော အတိုးနှုန်းများမှာ မည်သို့",
+    "test_queries": [
+      "Fixed Deposit သက်တမ်းအလိုက် ရရှိနိုင်သော အတိုးနှုန်းများမှာ မည်သို့ဖြစ်သနည်း။"
+    ]
+  },
+  {
+    "chunk_id": "fixed_deposit_and_interest_rates_md_sec_2",
+    "doc_name": "fixed_deposit_and_interest_rates.md",
+    "section_title": "Q:",
+    "text_preview": "passage: # Fixed Deposit & Interest Rates Policy\n## 3. Premature Withdrawal Policy (သက်တမ်း မပြည့်မီ ငွေပြန်လည် ထုတ်ယူခြင်း မူဝါဒ)\n\n### Q:\n* **Withdrawal Before 3 Months (၃ လ မပြည့်မီ ထုတ်ယူခြင်း):** ",
+    "test_queries": [
+      "Q:",
+      "Q: လား"
+    ]
+  },
+  {
+    "chunk_id": "fixed_deposit_and_interest_rates_md_sec_3",
+    "doc_name": "fixed_deposit_and_interest_rates.md",
+    "section_title": "Q: FD သက်တမ်းပြည့်သွားပါက မည်သို့ ဆောင်ရွက်နိုင်သနည်း။",
+    "text_preview": "passage: # Fixed Deposit & Interest Rates Policy\n## 4. Auto-Renewal & Maturity Options (သက်တမ်းပြည့်ပါက အလိုအလျောက် သက်တမ်းတိုးခြင်း)\n\n### Q: FD သက်တမ်းပြည့်သွားပါက မည်သို့ ဆောင်ရွက်နိုင်သနည်း။\nအကောင့",
+    "test_queries": [
+      "FD သက်တမ်းပြည့်သွားပါက မည်သို့ ဆောင်ရွက်နိုင်သနည်း။"
+    ]
+  },
+  {
+    "chunk_id": "loans_and_credit_products_md_sec_0",
+    "doc_name": "loans_and_credit_products.md",
+    "section_title": "Q: ဘဏ်တွင် ရရှိနိုင်သော ချေးငွေ အမျိုးအစားများမှာ မည်သည်နည်း။",
+    "text_preview": "passage: # Bank Loans & Credit Products Standard Policy Guide\n## 1. Loan Types & Overview (ချေးငွေ အမျိုးအစားများ နှင့် အထွေထွေ အချက်အလက်များ)\n\n### Q: ဘဏ်တွင် ရရှိနိုင်သော ချေးငွေ အမျိုးအစားများမှာ မည",
+    "test_queries": [
+      "ဘဏ်တွင် ရရှိနိုင်သော ချေးငွေ အမျိုးအစားများမှာ မည်သည်နည်း။"
+    ]
+  },
+  {
+    "chunk_id": "loans_and_credit_products_md_sec_2",
+    "doc_name": "loans_and_credit_products.md",
+    "section_title": "Q: ချေးငွေ လျှောက်ထားရန် မည်သည့် စာရွက်စာတမ်းများ လိုအပ်သနည်း။",
+    "text_preview": "passage: # Bank Loans & Credit Products Standard Policy Guide\n## 3. Eligibility & Required Documents (လျှောက်ထားရန် အရည်အချင်း နှင့် စာရွက်စာတမ်းများ)\n\n### Q: ချေးငွေ လျှောက်ထားရန် မည်သည့် စာရွက်စာတမ်",
+    "test_queries": [
+      "ချေးငွေ လျှောက်ထားရန် မည်သည့် စာရွက်စာတမ်းများ လိုအပ်သနည်း။",
+      "ချေးငွေ လျှောက်ထားရန် မည်သည့် အထောက်အထားများ လိုအပ်သနည်း။",
+      "ချေးငွေ လျှောက်ထားရန် မည်သည့် စာရွက်တွေ လိုအပ်သနည်း။"
+    ]
+  },
+  {
+    "chunk_id": "loans_and_credit_products_md_sec_3",
+    "doc_name": "loans_and_credit_products.md",
+    "section_title": "Q: ချေးငွေ ပြန်လည် ဆပ်ဆုမှုအား မည်သို့ ဆောင်ရွက်ရမည်နည်း။",
+    "text_preview": "passage: # Bank Loans & Credit Products Standard Policy Guide\n## 4. Repayment Rules & Early Settlement (ချေးငွေ ပြန်လည်ဆပ်ဆုမှု နှင့် စောစီးစွာ ဆပ်သီးခြင်း)\n\n### Q: ချေးငွေ ပြန်လည် ဆပ်ဆုမှုအား မည်သို့",
+    "test_queries": [
+      "ချေးငွေ ပြန်လည် ဆပ်ဆုမှုအား မည်သို့ ဆောင်ရွက်ရမည်နည်း။"
+    ]
+  },
+  {
+    "chunk_id": "mobile_banking_guide_md_sec_0",
+    "doc_name": "mobile_banking_guide.md",
+    "section_title": "Q: Mobile Banking အကောင့်အား မည်သို့ စတင်လျှောက်ထားရမည်နည်း။",
+    "text_preview": "passage: # Mobile Banking Application User Guide & FAQ\n## 1. Registration & First-Time Login (အကောင့်သစ် ဖွင့်လှစ်ခြင်း နှင့် ပထမဆုံးအကြိမ် ဝင်ရောက်ခြင်း)\n\n### Q: Mobile Banking အကောင့်အား မည်သို့ စတင",
+    "test_queries": [
+      "Mobile Banking အကောင့်အား မည်သို့ စတင်လျှောက်ထားရမည်နည်း။"
+    ]
+  },
+  {
+    "chunk_id": "mobile_banking_guide_md_sec_1",
+    "doc_name": "mobile_banking_guide.md",
+    "section_title": "Q: Password သို့မဟုတ် Transaction PIN မေ့သွားပါက မည်သို့ ဆောင်ရွက်ရမည်နည်း။",
+    "text_preview": "passage: # Mobile Banking Application User Guide & FAQ\n## 2. Password & Transaction PIN Management (စကားဝှက် နှင့် ငွေလွှဲ PIN နံပါတ် စီမံခန့်ခွဲခြင်း)\n\n### Q: Password သို့မဟုတ် Transaction PIN မေ့သွ",
+    "test_queries": [
+      "Password သို့မဟုတ် Transaction PIN မေ့သွားပါက မည်သို့ ဆောင်ရွက်ရမည်နည်း။"
+    ]
+  },
+  {
+    "chunk_id": "mobile_banking_guide_md_sec_2",
+    "doc_name": "mobile_banking_guide.md",
+    "section_title": "Q: Mobile Banking မှတစ်ဆင့် နေ့စဉ် ငွေမည်မျှ လွှဲပြောင်းနိုင်သနည်း။",
+    "text_preview": "passage: # Mobile Banking Application User Guide & FAQ\n## 3. Transfer Limits & Wallet Interoperability (ငွေလွှဲ ကန့်သတ်ချက် နှင့် Wallet သို့ ငွေလွှဲခြင်း)\n\n### Q: Mobile Banking မှတစ်ဆင့် နေ့စဉ် ငွေမ",
+    "test_queries": [
+      "Mobile Banking မှတစ်ဆင့် နေ့စဉ် ငွေမည်မျှ လွှဲပြောင်းနိုင်သနည်း။"
+    ]
+  },
+  {
+    "chunk_id": "mobile_banking_guide_md_sec_3",
+    "doc_name": "mobile_banking_guide.md",
+    "section_title": "Q: ဖုန်းအသစ် ပြောင်းသုံးပါက အကောင့်ကို မည်သို့ ပြောင်းရွှေ့ရမည်နည်း။",
+    "text_preview": "passage: # Mobile Banking Application User Guide & FAQ\n## 4. Device Change & Unbinding (ဖုန်းအသစ် ပြောင်းလဲခြင်း နှင့် Device ချိတ်ဆက်မှု ဖြုတ်ခြင်း)\n\n### Q: ဖုန်းအသစ် ပြောင်းသုံးပါက အကောင့်ကို မည်သို",
+    "test_queries": [
+      "ဖုန်းအသစ် ပြောင်းသုံးပါက အကောင့်ကို မည်သို့ ပြောင်းရွှေ့ရမည်နည်း။"
+    ]
+  },
+  {
+    "chunk_id": "mobile_banking_guide_md_sec_4",
+    "doc_name": "mobile_banking_guide.md",
+    "section_title": "Q: Mobile Banking အသုံးပြုရာတွင် မည်သည့် အချက်များကို သတိပြုရမည်နည်း။",
+    "text_preview": "passage: # Mobile Banking Application User Guide & FAQ\n## 5. Security Best Practices (လုံခြုံရေးဆိုင်ရာ သတိပြုရန် အချက်များ)\n\n### Q: Mobile Banking အသုံးပြုရာတွင် မည်သည့် အချက်များကို သတိပြုရမည်နည်း။\n",
+    "test_queries": [
+      "Mobile Banking အသုံးပြုရာတွင် မည်သည့် အချက်များကို သတိပြုရမည်နည်း။"
+    ]
+  }
+]

@@ -79,7 +79,7 @@ def ingest_single(file_path: str):
             vector = embedder.get_text_embedding(text)
             
             # ✅ FIX: Store text with passage: prefix in ChromaDB
-            node = TextNode(text=f"passage: {text}", embedding=vector)
+            node = TextNode(text=f"passage: {text}",id_=chunk['chunk_id'], embedding=vector)
             
             if 'metadata' in chunk:
                 node.metadata = chunk['metadata']

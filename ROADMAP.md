@@ -88,15 +88,19 @@ ChromaDB Schema:
 create query endpoint
 return top-k matching chunks
 include source metadata and scores
-User Query
-    ↓
-Embedding → Query Vector
-    ↓
-ChromaDB Search (Cosine Similarity)
-    ↓
-Top-K Results (အနီးဆုံး Chunks)
-    ↓
-Response (Answer)
+
+Query
+  ↓
+1. Hybrid Search (BM25 + Vector) → Top N (ဥပမာ - 10) ကိုယူတယ်
+  ↓
+2. Semantic Reranker (Cosine Similarity)
+   → Query Vector နဲ့ Chunk Vector တွေကို တိုက်ရိုက် Cosine တွက်တယ်
+  ↓
+3. Semantic Gate (Dense Similarity Gate)
+   → အမြင့်ဆုံး Score က Threshold (ဥပမာ - 0.5) အောက်ရင် Reject လုပ်တယ်
+  ↓
+4. Rerank လုပ်ထားတဲ့ Score အတိုင်း ပြန်စီပြီး Top 3 ပြန်ပေးတယ်
+
 
 * Phase 7: Hardening and Production Readiness
 add logs and monitoring
@@ -106,38 +110,29 @@ ensure secure document access and admin controls
 
 ### Standard JSON Output Payload Schema
 {
-  "query": "ATM ကတ် ပျောက်သွားရင် ဘာလုပ်ရမလဲ။",
-  "has_context": true,
-  "retrieved_count": 2,
-  "max_score": 0.885,
+  "query": "ကတ်အသစ် ထုတ်ယူရာတွင် မည်သည့် စာရွက်စာတမ်းများ ယူဆောင်လာရမည်နည်း",
+  "language": "my",
   "contexts": [
     {
-      "chunk_id": "chunk_9f823a",
-      "text": "ATM ကတ် ပျောက်ဆုံးပါက သက်ဆိုင်ရာ ဘဏ်သို့ ချက်ချင်း ဖုန်းဆက်၍ ကတ်အား ပိတ်ဆို့ (Block) ရပါမည်။ ဘဏ်ခွဲသို့ လူကိုယ်တိုင် သွားရောက်ပါက မှတ်ပုံတင် မူရင်း ယူဆောင်လာရပါမည်။",
-      "score": 0.885,
-      "metadata": {
-        "doc_id": "doc_102",
-        "doc_name": "ATM_Services_FAQ_v1.pdf",
-        "page_label": "3",
-        "section_title": "Card Loss Procedure",
-        "department": "Retail Banking",
-        "last_updated": "2026-01-15"
-      }
-    },
-    {
-      "chunk_id": "chunk_9f823b",
-      "text": "ကတ် အသစ်ပြန်လည် လျှောက်ထားပါက လျှောက်ထားခ ကျပ် ၅,၀၀၀ ကျသင့်မည် ဖြစ်ပါသည်။",
-      "score": 0.762,
-      "metadata": {
-        "doc_id": "doc_102",
-        "doc_name": "ATM_Services_FAQ_v1.pdf",
-        "page_label": "4",
-        "section_title": "Service Fees",
-        "department": "Retail Banking",
-        "last_updated": "2026-01-15"
-      }
+      "rank": 1,
+      "chunk_id": "card_replacement_policy_md_sec_2",
+      "question": "ကတ်အသစ် ထုတ်ယူရာတွင် မည်သည့် စာရွက်စာတမ်းများ ယူဆောင်လာရမည်နည်း",
+      "text": "ဘဏ်ခွဲတွင် ကတ်အသစ် ထုတ်ယူရာတွင် NRC မူရင်း၊ Passport နှင့် Stay Permit၊ Power of Attorney တို့ ယူဆောင်လာရပါမည်။",
+      "source": {
+        "doc_name": "card_replacement_policy.md",
+        "section": "Required Verification Documents",
+        "page_number": 1
+      },
+      "retrieval_score": 0.1639
     }
-  ]
+  ],
+  "instructions": {
+    "answer_only_from_context": true,
+    "answer_language": "my",
+    "include_citations": true,
+    "return_json_only": true,
+    "do_not_invent_information": true
+  }
 }
 
 ## current folder structure 

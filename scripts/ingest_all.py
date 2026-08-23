@@ -17,13 +17,6 @@ from app.services.rag.chunker import SectionDocumentChunker
 from llama_index.core.schema import TextNode
 from core.config import settings
 
-# ============================================================
-# FIX: Data directory ကို project root အောက်မှာ သတ်မှတ်ပါ
-# ============================================================
-# ❌ ဒါကိုဖယ်ပါ (Relative Path ဖြစ်နေတယ်)
-# DATA_DIR = Path(settings.CHROMA_PERSIST_DIR)
-
-# ✅ ဒီလိုပြင်ပါ (Project Root ကိုသုံးမယ်)
 DATA_DIR = PROJECT_ROOT / "data" / "chroma_db"
 DATA_DIR.mkdir(parents=True, exist_ok=True)
 
@@ -98,6 +91,13 @@ def ingest_all():
                     logger.warning(f"Only {len(chunks)} chunk generated for {file_path.name}. Check chunker logic.")
                     print(f"   ⚠️ Warning: Only {len(chunks)} chunk generated!")
                 
+                # ============================================================
+                # FIX: Deduplication - Delete existing chunks for this document
+                # ============================================================
+                deleted = store.delete_document(file_path.name)
+                if deleted > 0:
+                    print(f"   🗑️ Deleted {deleted} existing chunks")
+                
                 # 3. Convert to nodes and embed
                 nodes = []
                 for chunk in chunks:
@@ -112,7 +112,7 @@ def ingest_all():
                     # ============================================================
                     # FIX: Store text with passage: prefix in ChromaDB
                     # ============================================================
-                    node = TextNode(text=f"passage: {text}", embedding=vector)
+                    node = TextNode(text=f"passage: {text}",id_=chunk['chunk_id'], embedding=vector)
                     
                     # Add metadata if available
                     if 'metadata' in chunk:

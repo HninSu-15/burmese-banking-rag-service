@@ -26,6 +26,8 @@ class RAGSettings:
     # Retrieval Configuration
     TOP_K: int = int(os.getenv("TOP_K", "3"))
     SIMILARITY_THRESHOLD: float = float(os.getenv("SIMILARITY_THRESHOLD", "0.3"))
+    SEMANTIC_DOMAIN_THRESHOLD: float = float(os.getenv("SEMANTIC_DOMAIN_THRESHOLD", "0.55"))
+    RERANKER_THRESHOLD: float = float(os.getenv("RERANKER_THRESHOLD", "0.2"))
 
 # Global Settings Instance
 settings = RAGSettings()

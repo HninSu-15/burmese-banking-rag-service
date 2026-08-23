@@ -1,0 +1,39 @@
+{"query": "ATM ကတ် ပျောက်ဆုံးသွားပါက သို့မဟုတ် ခိုးယူခံရပါက ဘာလုပ်ရမလဲ။", "ground_truth_chunk_ids": ["atm_services_faq_md_sec_0"]}
+{"query": "ATM ကတ် ပျောက်ဆုံးသွားပါက သို့မဟုတ် ခိုးယူခံရပါက ဘယ်လိုလုပ်ရမလဲ။", "ground_truth_chunk_ids": ["atm_services_faq_md_sec_0"]}
+{"query": "ATM ကတ် ပျောက်သွားရင် သို့မဟုတ် ခိုးယူခံရပါက ဘာလုပ်ရမလဲ။", "ground_truth_chunk_ids": ["atm_services_faq_md_sec_0"]}
+{"query": "ATM ကတ် ပျောက်သွားပါက သို့မဟုတ် ခိုးယူခံရပါက ဘာလုပ်ရမလဲ။", "ground_truth_chunk_ids": ["atm_services_faq_md_sec_0"]}
+{"query": "ATM ကတ် အသစ်ပြန်လျှောက်ရင် ဘယ်လောက် ကုန်ကျမလဲ။", "ground_truth_chunk_ids": ["atm_services_faq_md_sec_1"]}
+{"query": "ATM စက်မှ တစ်နေ့လျှင် ငွေဘယ်လောက်အထိ ထုတ်ယူနိုင်ပါသလဲ။", "ground_truth_chunk_ids": ["atm_services_faq_md_sec_2"]}
+{"query": "ATM စက်မှ တစ်နေ့လျှင် ငွေဘယ်လောက်အထိ ထုတ်ဖို့နိုင်ပါသလဲ။", "ground_truth_chunk_ids": ["atm_services_faq_md_sec_2"]}
+{"query": "ATM စက်မှ တစ်နေ့လျှင် ငွေဘယ်လောက်အထိ ထုတ်လို့ရပါသလဲ။", "ground_truth_chunk_ids": ["atm_services_faq_md_sec_2"]}
+{"query": "ATM စက်ထဲ ကတ်ညပ်ကျန်ခဲ့ရင် ဘယ်လိုလုပ်ရမလဲ။", "ground_truth_chunk_ids": ["atm_services_faq_md_sec_3"]}
+{"query": "ATM PIN နံပါတ် မေ့သွားရင် သို့မဟုတ် ပြောင်းချင်ရင် ဘယ်လိုလုပ်ရမလဲ။", "ground_truth_chunk_ids": ["atm_services_faq_md_sec_4"]}
+{"query": "ဘဏ်ခွဲများ၏ ပုံမှန်ဖွင့်လှစ်ချိန် နှင့် ရုံးပိတ်ရက်များမှာ မည်သို့ဖြစ်သနည်း။", "ground_truth_chunk_ids": ["branch_and_atm_locator_md_sec_0"]}
+{"query": "ATM နှင့် CRM (Cash Recycling Machine) စက်များ၏ ကွာခြားချက်နှင့် ဝန်ဆောင်မှုများမှာ မည်သည်နည်း။", "ground_truth_chunk_ids": ["branch_and_atm_locator_md_sec_1"]}
+{"query": "မိမိနှင့် အနီးဆုံး ဘဏ်ခွဲ သို့မဟုတ် ATM/CRM စက်ကို မည်သို့ ရှာဖွေနိုင်သနည်း။", "ground_truth_chunk_ids": ["branch_and_atm_locator_md_sec_2"]}
+{"query": "သင်္ကြန် သို့မဟုတ် အစိုးရ ရုံးပိတ်ရက်ရှည်များတွင် ဘဏ်ဝန်ဆောင်မှု ရရှိနိုင်ပါသလား။", "ground_truth_chunk_ids": ["branch_and_atm_locator_md_sec_4"]}
+{"query": "မည်သည့် အခြေအနေများတွင် ကတ် အစားထိုး လျှောက်ထားနိုင်သနည်း။", "ground_truth_chunk_ids": ["card_replacement_policy_md_sec_0"]}
+{"query": "ကတ်အသစ် ထုတ်ယူရာတွင် မည်သည့် စာရွက်စာတမ်းများ ယူဆောင်လာရမည်နည်း။", "ground_truth_chunk_ids": ["card_replacement_policy_md_sec_2"]}
+{"query": "ကတ်အသစ် ထုတ်ဖို့ရာတွင် မည်သည့် စာရွက်စာတမ်းများ ယူဆောင်လာရမည်နည်း။", "ground_truth_chunk_ids": ["card_replacement_policy_md_sec_2"]}
+{"query": "ကတ်သစ် ထုတ်ယူရာတွင် မည်သည့် စာရွက်စာတမ်းများ ယူဆောင်လာရမည်နည်း။", "ground_truth_chunk_ids": ["card_replacement_policy_md_sec_2"]}
+{"query": "ကတ်အသစ် ထုတ်ယူရာတွင် မည်သည့် အထောက်အထားများ ယူဆောင်လာရမည်နည်း။", "ground_truth_chunk_ids": ["card_replacement_policy_md_sec_2"]}
+{"query": "ကတ်အသစ် ထုတ်ယူရာတွင် မည်သည့် စာရွက်တွေ ယူဆောင်လာရမည်နည်း။", "ground_truth_chunk_ids": ["card_replacement_policy_md_sec_2"]}
+{"query": "အရေးပေါ် ကတ်အသစ် လိုအပ်ပါက မည်သို့ ဆောင်ရွက်ရမည်နည်း။", "ground_truth_chunk_ids": ["card_replacement_policy_md_sec_3"]}
+{"query": "အရေးပေါ် ကတ်သစ် လိုအပ်ပါက မည်သို့ ဆောင်ရွက်ရမည်နည်း။", "ground_truth_chunk_ids": ["card_replacement_policy_md_sec_3"]}
+{"query": "ကတ်အသစ် ရရှိပြီးပါက အကောင့်အဟောင်းနှင့် တိုက်ရိုက် ချိတ်ဆက်ပါသလား။", "ground_truth_chunk_ids": ["card_replacement_policy_md_sec_4"]}
+{"query": "ကတ်သစ် ရရှိပြီးပါက အကောင့်အဟောင်းနှင့် တိုက်ရိုက် ချိတ်ဆက်ပါသလား။", "ground_truth_chunk_ids": ["card_replacement_policy_md_sec_4"]}
+{"query": "Fixed Deposit (အသေအချာ အပ်ငွေ) အကောင့် ဆိုသည်မှာ မည်သည်နည်း။ မည်သည့် သက်တမ်းများ ရရှိနိုင်သနည်း။", "ground_truth_chunk_ids": ["fixed_deposit_and_interest_rates_md_sec_0"]}
+{"query": "Fixed Deposit သက်တမ်းအလိုက် ရရှိနိုင်သော အတိုးနှုန်းများမှာ မည်သို့ဖြစ်သနည်း။", "ground_truth_chunk_ids": ["fixed_deposit_and_interest_rates_md_sec_1"]}
+{"query": "Q:", "ground_truth_chunk_ids": ["fixed_deposit_and_interest_rates_md_sec_2"]}
+{"query": "Q: လား", "ground_truth_chunk_ids": ["fixed_deposit_and_interest_rates_md_sec_2"]}
+{"query": "FD သက်တမ်းပြည့်သွားပါက မည်သို့ ဆောင်ရွက်နိုင်သနည်း။", "ground_truth_chunk_ids": ["fixed_deposit_and_interest_rates_md_sec_3"]}
+{"query": "ဘဏ်တွင် ရရှိနိုင်သော ချေးငွေ အမျိုးအစားများမှာ မည်သည်နည်း။", "ground_truth_chunk_ids": ["loans_and_credit_products_md_sec_0"]}
+{"query": "ချေးငွေ လျှောက်ထားရန် မည်သည့် စာရွက်စာတမ်းများ လိုအပ်သနည်း။", "ground_truth_chunk_ids": ["loans_and_credit_products_md_sec_2"]}
+{"query": "ချေးငွေ လျှောက်ထားရန် မည်သည့် အထောက်အထားများ လိုအပ်သနည်း။", "ground_truth_chunk_ids": ["loans_and_credit_products_md_sec_2"]}
+{"query": "ချေးငွေ လျှောက်ထားရန် မည်သည့် စာရွက်တွေ လိုအပ်သနည်း။", "ground_truth_chunk_ids": ["loans_and_credit_products_md_sec_2"]}
+{"query": "ချေးငွေ ပြန်လည် ဆပ်ဆုမှုအား မည်သို့ ဆောင်ရွက်ရမည်နည်း။", "ground_truth_chunk_ids": ["loans_and_credit_products_md_sec_3"]}
+{"query": "Mobile Banking အကောင့်အား မည်သို့ စတင်လျှောက်ထားရမည်နည်း။", "ground_truth_chunk_ids": ["mobile_banking_guide_md_sec_0"]}
+{"query": "Password သို့မဟုတ် Transaction PIN မေ့သွားပါက မည်သို့ ဆောင်ရွက်ရမည်နည်း။", "ground_truth_chunk_ids": ["mobile_banking_guide_md_sec_1"]}
+{"query": "Mobile Banking မှတစ်ဆင့် နေ့စဉ် ငွေမည်မျှ လွှဲပြောင်းနိုင်သနည်း။", "ground_truth_chunk_ids": ["mobile_banking_guide_md_sec_2"]}
+{"query": "ဖုန်းအသစ် ပြောင်းသုံးပါက အကောင့်ကို မည်သို့ ပြောင်းရွှေ့ရမည်နည်း။", "ground_truth_chunk_ids": ["mobile_banking_guide_md_sec_3"]}
+{"query": "Mobile Banking အသုံးပြုရာတွင် မည်သည့် အချက်များကို သတိပြုရမည်နည်း။", "ground_truth_chunk_ids": ["mobile_banking_guide_md_sec_4"]}

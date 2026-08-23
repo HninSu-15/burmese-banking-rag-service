@@ -18,6 +18,7 @@ class ChunkMetadata(BaseModel):
     page_number: int = 1
     chunk_index: int
     section_title: str
+    question: str = ""
     section_level: int
     parent_section: str
     header_path: str
@@ -62,18 +63,24 @@ class SectionDocumentChunker:
         if not doc or not doc.pages:
             return []
         
-        # Get text from first page (or combine all pages)
-        raw_text = doc.pages[0].raw_text if doc.pages else ""
-        page_number = doc.pages[0].page_number if doc.pages else 1
-        
-        # Call internal chunking method
-        return self._chunk_raw_text(
-            raw_text=raw_text,
-            doc_id=doc.doc_id,
-            doc_name=doc.doc_name,
-            file_path=doc.file_path,
-            page_number=page_number
-        )
+        all_chunks: List[Dict[str, Any]] = []
+        for page in doc.pages:
+            page_chunks = self._chunk_raw_text(
+                raw_text=page.raw_text,
+                doc_id=doc.doc_id,
+                doc_name=doc.doc_name,
+                file_path=doc.file_path,
+                page_number=page.page_number,
+            )
+            all_chunks.extend(page_chunks)
+
+        total_chunks = len(all_chunks)
+        for index, chunk in enumerate(all_chunks):
+            chunk["chunk_id"] = f"{doc.doc_id}_sec_{index}"
+            chunk["metadata"]["chunk_index"] = index
+            chunk["metadata"]["total_chunks_in_doc"] = total_chunks
+
+        return all_chunks
 
     def _chunk_raw_text(
         self,
@@ -245,6 +252,7 @@ class SectionDocumentChunker:
                 page_number=page_number,
                 chunk_index=index,
                 section_title=sec["title"],
+                question=self._extract_question(sec["title"]),
                 section_level=sec["level"],
                 parent_section=sec["parent_section"],
                 header_path=sec["header_path"] if self.include_header_path else "",
@@ -283,4 +291,9 @@ class SectionDocumentChunker:
             return {"level": 3, "title": line_clean}
 
         return None
+
+    @staticmethod
+    def _extract_question(title: str) -> str:
+        """Return FAQ question text without the Markdown Q prefix."""
+        return re.sub(r"^Q\s*:\s*", "", title).strip()
     

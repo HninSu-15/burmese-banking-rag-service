@@ -63,8 +63,26 @@ class ChromaVectorStoreService:
 
         # 4. Create LlamaIndex Storage Context
         self._storage_context = StorageContext.from_defaults(vector_store=self._vector_store)
-    # app/services/rag/vector_store.py
-# ဒီ method ကို ChromaVectorStoreService class ထဲမှာထည့်ပါ
+
+    def delete_document(self, doc_name: str) -> int:
+        """
+        Delete all chunks belonging to a specific document by its filename.
+        Returns the number of chunks deleted.
+        """
+        try:
+            results = self._chroma_collection.get(where={"doc_name": doc_name})
+            
+            if results and results['ids']:
+                self._chroma_collection.delete(ids=results['ids'])
+                deleted_count = len(results['ids'])
+                logger.info(f" Deleted {deleted_count} chunks for document: {doc_name}")
+                return deleted_count
+            else:
+                logger.info(f" No existing chunks found for document: {doc_name}")
+                return 0
+        except Exception as e:
+            logger.error(f" Failed to delete document {doc_name}: {e}")
+            return 0
 
 
     def retrieve(
@@ -166,9 +184,21 @@ class ChromaVectorStoreService:
         has_embeddings = all(hasattr(node, 'embedding') and node.embedding is not None for node in nodes)
         
         if has_embeddings:
-            # ✅ Direct insertion - NO OpenAI needed (Embeddings already exist)
+            # ✅ FIX: Direct insertion with metadata
             logger.info("Nodes already have embeddings. Inserting directly into ChromaDB...")
-            self._storage_context.vector_store.add(nodes)
+            
+            # Extract data for ChromaDB
+            ids = [node.id_ for node in nodes]
+            documents = [node.text for node in nodes]
+            embeddings = [node.embedding for node in nodes]
+            metadatas = [node.metadata for node in nodes]  # ← Metadata 
+            
+            self._chroma_collection.add(
+                ids=ids,
+                documents=documents,
+                embeddings=embeddings,
+                metadatas=metadatas
+            )
             logger.info(f"Successfully added {len(nodes)} nodes to ChromaDB.")
         else:
             # Fallback: Use VectorStoreIndex (requires embed_model)
