@@ -1,7 +1,9 @@
-###  `docs/ARCHITECTURE.md`
-
-```markdown
 # Software Architecture & Technical Specification
+
+> **Burmese Banking RAG Service** — Grounded Knowledge Retrieval Layer
+> This document describes the **current implemented architecture** of the RAG service.
+
+---
 
 ## 1. System Overview & Core Features
 
@@ -16,179 +18,186 @@ The system must:
 5. Answer using only retrieved and approved sources.
 6. Avoid hallucination when evidence is insufficient.
 
+### 1.2 Scope of This Repository
+This repository is the **RAG & Knowledge Retrieval Layer** only. It does **not** include:
+- Frontend / TTS / Voice
+- Gemini/LLM answer generation (consumes this service's JSON contract)
+- User authentication / RBAC (handled by the external gateway)
+- PostgreSQL metadata store (optional, future)
+
 ---
 
 ## 2. AI Architecture & Model Selection Strategy
 
-### 2.1 Final Model Recommendation
-* **MVP Phase Strategy:**
-  * **Embedding Model:** Qwen3 Embedding (Strong multilingual & Burmese support).
-  * **Vector DB:** ChromaDB (Simple, fast setup for semantic search).
-  * **Generation Model:** Gemini API (Production-grade answer quality with minimal operational maintenance).
-  * **Orchestration:** FastAPI service with async background indexing via Celery/Redis.
-* **Production Scale Strategy:**
-  * **Hybrid Retrieval:** Combine vector search (Qwen3) + keyword search (BM25) with a re-ranker model for legal/banking precision.
+### 2.1 Implemented Model Stack
+| Layer | Technology | Status |
+| :--- | :--- | :--- |
+| **Embedding Model** | Qwen3 Embedding (GGUF, CPU via `llama-cpp-python`) | ✅ Implemented |
+| **Vector DB** | ChromaDB (persistent, cosine similarity) | ✅ Implemented |
+| **Retrieval** | Hybrid: BM25 (Burmese n-grams) + vector search + cosine reranker | ✅ Implemented |
+| **Generation Model** | Gemini API (external, consumes this service's JSON) | 🔜 External / future |
+| **Orchestration** | FastAPI service (synchronous) | ✅ Implemented |
+| **Async Workers** | Celery / Redis | 🔜 Future |
 
-### 2.2 Trade-off Analysis Summary
-| Model Type | Accuracy | Latency | Hosting / Cost | Ease of Integration | Best Use Case |
-| :--- | :--- | :--- | :--- | :--- | :--- |
-| **Qwen3 + Local LLM** | High with tuning | Medium | Low–Medium over time | Medium | Controlled enterprise deployment |
-| **Proprietary API Stack** | High out-of-the-box | Low | Medium–High recurring | High | Fast MVP and experimentation |
-| **Hybrid Domain-Tuned System** | Very High | Medium | Medium–High | Medium | Long-term production system |
+### 2.2 ML Pipeline Architecture
 
-### 2.3 ML Pipeline Architecture
-
-**API Entrypoint:** FastAPI
-* **Async Workers:** Celery / RQ for CPU/GPU intensive tasks (OCR, Chunking, Embedding generation).
-* **Decoupled LLM Layer:** Gemini API wrapped inside an abstract service interface to enable seamless model swapping.
+**API Entrypoint:** FastAPI (`app/main.py`)
+- **Retrieval:** HybridRetriever (BM25 + vector + SemanticReranker)
+- **Context Contract:** LLMContextBuilder produces the JSON consumed by the LLM layer
+- **Decoupled LLM Layer:** Gemini API (external) consumes the retrieval JSON contract
 
 ---
 
 ## 3. System Architecture & Folder Structure
 
-### 3.1 Layered Modular Design
-The project uses a clean, layered modular architecture separating presentation, domain, infrastructure, and persistence logic
+### 3.1 Current Implemented Structure
 
-### Recommended Project Structure
+```
 burmese_bank_rag_service/
-├── README.md
-├── ARCHITECTURE.md
+├── core/
+│   └── config.py              # RAGSettings + service config (RAG_API_TOKEN, SERVICE_NAME, SERVICE_VERSION)
 ├── app/
+│   ├── main.py                # FastAPI entrypoint (lifespan, router registration)
 │   ├── api/
-│   │   ├── deps.py
+│   │   ├── deps.py            # X-RAG-Service-Token auth dependency
+│   │   ├── schemas.py         # Pydantic request/response contract models
 │   │   └── v1/
-│   │       ├── auth.py
-│   │       ├── documents.py      # Trigger document ingestion
-│   │       ├── chat.py           # LLM orchestration endpoint
-│   │       └── search.py         # Direct knowledge vector search endpoint
-│   ├── core/
-│   │   ├── config.py             # Chroma, Qwen, & RAG configurations
-│   │   ├── logging.py
-│   │   ├── security.py
-│   │   └── exceptions.py
-│   ├── db/
-│   │   ├── base.py
-│   │   ├── session.py
-│   │   └── migrations/
-│   ├── models/
-│   │   ├── user.py
-│   │   ├── document.py
-│   │   ├── chunk.py
-│   │   ├── conversation.py
-│   │   └── message.py
-│   ├── schemas/
-│   │   ├── auth.py
-│   │   ├── document.py
-│   │   ├── chat.py
-│   │   └── response.py
-│   ├── services/
-│   │   ├── rag/                          # <--- CORE RAG SUBSYSTEM
-│   │   │   ├── __init__.py
-│   │   │   ├── parsers.py                # PyMuPDF, PaddleOCR, docx parsers
-│   │   │   ├── normalizer.py             # Unicode NFC cleaning
-│   │   │   ├── embedding_service.py      # Qwen3 HuggingFace model wrapper
-│   │   │   ├── vector_store.py           # ChromaDB client & metadata indexing
-│   │   │   ├── ingestion_service.py      # LlamaIndex chunking & indexing
-│   │   │   └── retrieval_service.py      # Similarity query engine & thresholding
-│   │   ├── auth_service.py
-│   │   ├── document_service.py
-│   │   ├── llm_service.py
-│   │   └── conversation_service.py
-│   ├── workers/
-│   │   ├── celery_app.py
-│   │   ├── ingest_tasks.py               # Async document parsing/indexing
-│   │   └── embedding_tasks.py
-│   ├── utils/
-│   │   ├── text_cleaning.py              # Burmese text cleaning utilities
-│   │   ├── burmese_normalizer.py         # TTS number/currency normalizer
-│   │   └── validators.py
-│   ├── main.py
-│   └── startup.py
-├── tests/
-│   ├── unit/
-│   ├── integration/
-│   └── e2e/
-├── docs/
-│   └── ARCHITECTURE.md
+│   │       └── routes.py      # /health, /retrieve, /ingest, /ingest-file
+│   └── services/
+│       └── rag/
+│           ├── normalizer.py          # Burmese text normalization (Unicode NFC)
+│           ├── ingestion_parser.py    # Markdown parsing + PII masking
+│           ├── chunker.py             # Header-aware, hierarchy-preserving chunking
+│           ├── embedder_service.py    # Qwen3 GGUF embeddings (CPU)
+│           ├── vector_store.py        # ChromaDB persistent store
+│           ├── hybrid_retriever.py    # BM25 + vector + reranker
+│           ├── context_builder.py     # LLM JSON contract builder
+│           ├── factory.py             # Singleton service factory
+│           ├── exceptions.py          # Custom RAG exceptions
+│           ├── ingestion_service.py   # Programmatic ingestion (API)
+│           ├── retrieval_service.py   # Programmatic retrieval (API)
+│           └── main.py                # CLI pipeline
+├── knowledge/*.md             # Approved banking knowledge base
+├── scripts/                   # ingest_all, ingest_single, search, delete_doc, eval scripts
+├── tests/                     # unit + integration (incl. test_api.py)
+├── evaluation/                # eval_dataset.jsonl, base_chunks.json
+├── RAG_API_GUIDELINES.md      # Team integration guide
 ├── requirements.txt
-├── .env.example
-├── Dockerfile
-├── docker-compose.yml
-└── pyproject.toml
+└── .env
+```
 
-### Overview of Project structure
-burmese_bank_rag_service/
-├── app/
-│   ├── api/
-│   │   └── v1/
-│   │       ├── documents.py      # Doc Ingestion Endpoint
-│   │       └── search.py         # Direct Search Endpoint
-│   ├── core/
-│   │   └── config.py             # App & Chroma Configuration
-│   ├── services/
-│   │   └── rag/
-│   │       ├── __init__.py
-│   │       ├── parsers.py        # PDF, Docx, PaddleOCR
-│   │       ├── normalizer.py     # Burmese Text Cleaning
-│   │       ├── vector_store.py   # ChromaDB & Qwen3 setup
-│   │       ├── ingestion_service.py
-│   │       └── retrieval_service.py
-├── docs/
-│   └── ARCHITECTURE.md
-└── requirements.txt
+### 3.2 Data Flow
 
+```
+[User Query]
+    │
+    ▼
+[FastAPI: POST /api/v1/retrieve]
+    │
+    ▼
+[HybridRetriever]
+    ├── BM25 (Burmese n-grams) ──┐
+    ├── Vector search (ChromaDB) ─┤── RRF Fusion
+    └── SemanticReranker ────────┘
+    │
+    ▼
+[LLMContextBuilder]
+    │  → JSON contract (contexts, citations, instructions)
+    ▼
+[Downstream LLM / Generation Layer (external)]
+```
 
-## 4. Database Schema & Data Modeling
+---
 
-The system isolates relational metadata (PostgreSQL), vector indices (ChromaDB), and transient state (Redis).
+## 4. Data Storage
 
-### 4.1 Core Entities (PostgreSQL)
-* **Users:** `id`, `email`, `password_hash`, `role` (admin/user/auditor), `is_active`, timestamps.
-* **Documents:** `id`, `title`, `source_type`, `file_path`, `version`, `status`, `uploaded_by`, `checksum_hash`.
-* **Document Sections:** `id`, `document_id`, `section_name`, `page_number`, `raw_text`.
-* **Chunks:** `id`, `document_id`, `section_id`, `chunk_text`, `chunk_index`, `page_number`, `metadata_json`.
-* **Conversations & Messages:** `id`, `user_id`, session titles, sender type (`user`/`assistant`), `retrieved_context_ids`.
-* **Retrieval & Audit Logs:** `query_text`, `top_k`, `retrieved_chunk_ids`, `latency_ms`, action details.
+### 4.1 Vector Store (ChromaDB)
+- **Collection:** `burmese_banking_knowledge`
+- **Persistence:** `data/chroma_db` (local, persistent)
+- **Metric:** cosine similarity
+- **Chunk metadata:** `doc_id`, `doc_name`, `section_title`, `page_number`, `chunk_index`, `header_path`, `parent_section`, `pii_masked`, etc.
+- **Text prefix:** chunks stored with `passage:` prefix for retrieval clarity
+
+### 4.2 Relational Metadata (PostgreSQL)
+- **Not yet implemented** — planned for future phases (documents, chunks, conversations, audit logs).
 
 ---
 
 ## 5. API Endpoints Overview (`/api/v1`)
 
-### Authentication & Users
-* `POST /api/v1/auth/register` - User registration.
-* `POST /api/v1/auth/login` - Authenticate & receive JWT access/refresh tokens.
+### Implemented Endpoints
 
-### Document Management
-* `POST /api/v1/documents/upload` - File ingestion (PDF/DOCX/PPTX/Image).
-* `POST /api/v1/documents/{id}/ingest` - Trigger OCR, extraction, and vector indexing.
-* `GET /api/v1/documents` - List document metadata and approval status.
+| Method | Endpoint | Purpose |
+| :--- | :--- | :--- |
+| `GET` | `/api/v1/health` | Service status, component readiness, document count |
+| `POST` | `/api/v1/retrieve` | **Main contract** — returns retrieval JSON for the LLM team |
+| `POST` | `/api/v1/ingest` | Ingest markdown content (add/update knowledge) |
+| `POST` | `/api/v1/ingest-file` | Ingest a markdown file from the server filesystem (admin/internal) |
+| `DELETE` | `/api/v1/documents/{doc_name}` | Delete all chunks for a document by filename |
 
-### Retrieval & Search
-* `POST /api/v1/search/retrieve` - Semantic vector retrieval (returns top-k chunks with scores).
-* `POST /api/v1/search/hybrid` - Combined vector + keyword search.
+### Authentication
+- **Header:** `X-RAG-Service-Token`
+- **Config:** `RAG_API_TOKEN` in `.env`
+- **Behavior:** empty token = auth disabled (dev); set token = 401/403 enforcement
 
-### Chat & Conversation
-* `POST /api/v1/chat/sessions` - Create chat session.
-* `POST /api/v1/chat/sessions/{id}/messages` - Submit prompt, perform retrieval, and generate grounded answer via Gemini.
+### The JSON Contract (for the LLM Team)
+
+`POST /api/v1/retrieve` returns the exact payload consumed by the LLM/generation layer. The full field-by-field reference and examples are documented in **`RAG_API_GUIDELINES.md`**.
+
+**Key fields:**
+- `query` — original user query
+- `language` — `"my"` or `"en"`
+- `has_context` — whether relevant evidence was found
+- `confidence` — `"high"` or `"low"`
+- `contexts[]` — ranked chunks (`rank`, `chunk_id`, `question`, `text`, `source`, `retrieval_score`)
+- `citations[]` — source attribution (`chunk_id`, `source`, `section`)
+- `answer` — refusal message when `has_context=false`
+- `instructions` — flags the LLM must honor
+
+**LLM integration rules:**
+- `has_context: true` → answer ONLY from `contexts[].text`
+- `has_context: false` → return `answer` verbatim, never improvise
+- Honor all `instructions` flags
 
 ---
 
 ## 6. Non-Functional & Security Requirements
 
-* **Role-Based Access Control (RBAC):** Admin-only controls for document indexing and system metrics.
-* **Input Validation & Sanitization:** Strict file-type restrictions, payload validation via Pydantic, and defense against SQL Injection/XSS.
-* **Structured Logging & Tracing:** Centralized `structlog` output using JSON format with correlation trace IDs across request pipelines.
-* **Error Handling & Fallback:** Custom exception middleware returning standardized error responses. Built-in refusal logic when retrieval evidence score is below threshold.
+### Implemented
+- **Internal service token auth** (`X-RAG-Service-Token`) — replaces planned JWT/RBAC for this service
+- **Input validation** — Pydantic models (query length, top_k bounds, filename rules)
+- **PII masking** — NRC, card numbers, account numbers, phone numbers redacted before embedding
+- **Refusal logic** — built-in when retrieval evidence is insufficient (`has_context=false`)
+- **Idempotent ingestion** — delete-then-add on re-ingest
+
+### Planned / Future
+- **RBAC** — handled by external gateway
+- **Structured logging (structlog)** — currently standard logging
+- **Observability (Prometheus/Grafana)** — future
+- **Async workers (Celery/Redis)** — future
 
 ---
 
-## 7. Phased Implementation Roadmap
+## 7. Implementation Status & Roadmap
 
-* **Phase 1: Foundation & Project Setup** — Folder structure, Docker setup, FastAPI base, PostgreSQL & Redis configs.
-* **Phase 2: Authentication & User Management** — User schema, JWT access flow, RBAC authorization handlers.
-* **Phase 3: Document Ingestion & Extraction** — Upload pipeline, file validators, PaddleOCR integration, metadata tracking.
-* **Phase 4: Text Normalization & Chunking** — Burmese text cleaning, chunking strategies, metadata-enriched chunk DB insertion.
-* **Phase 5: Qwen3 Embeddings & ChromaDB** — Vector generation pipeline, ChromaDB collection indexing, top-k retrieval API.
-* **Phase 6: Conversation & Gemini Orchestration** — Context prompt builder, Gemini LLM connection, chat memory, refusal guardrails.
-* **Phase 7: Evaluation & Quality Safeguards** — Retrieval benchmarking, groundness validation, citation metadata injection.
-* **Phase 8: Production Hardening** — Observability (Prometheus/Grafana), rate limiting, query optimization, and CI/CD pipelines.
+### Completed
+- ✅ **Phase 4: Text Normalization & Chunking** — Burmese cleaning, header-aware chunking, metadata enrichment
+- ✅ **Phase 5: Qwen3 Embeddings & ChromaDB** — vector generation, ChromaDB indexing, top-k retrieval
+- ✅ **Phase 6 (partial): Retrieval API** — FastAPI layer, `/retrieve` contract, `/ingest`, `/health`
+- ✅ **Phase 7 (partial): Evaluation** — `evaluate_retrieval.py`, `eval_dataset.jsonl`
+
+### Pending / Future
+- 🔜 **Phase 3: PDF/OCR ingestion** — PyMuPDF, PaddleOCR (currently Markdown-only)
+- 🔜 **Phase 6 (rest): Gemini orchestration** — LLM layer consumes the JSON contract (external)
+- 🔜 **Phase 7 (rest): Groundness validation, citation injection** — partially via `context_builder`
+- 🔜 **Phase 8: Production Hardening** — observability, rate limiting, CI/CD
+- ✅ **Docker Deployment** — multi-stage `Dockerfile` with pre-downloaded Qwen3 GGUF model, `docker-compose.yml` with persistent volumes (chroma_data, knowledge, logs), non-root user, health checks
+
+---
+
+## 8. Testing
+
+- **Unit tests:** `tests/unit/` — parser, chunker, hybrid retriever
+- **Integration tests:** `tests/integration/` — vector store, search, embedder, API (`test_api.py`)
+- **Run:** `python -m pytest -q` → 31 passed, 1 skipped
+- **API tests cover:** contract shape, refusal path, token auth, input validation
